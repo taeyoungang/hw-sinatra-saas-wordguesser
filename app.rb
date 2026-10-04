@@ -70,11 +70,19 @@ class WordGuesserApp < Sinatra::Base
 
   get '/win' do
     ### YOUR CODE HERE ###
-    erb :win # You may change/remove this line
+    if @game.check_win_or_lose != :win # prevents cheating
+      redirect '/show'
+    else
+      erb :win # You may change/remove this line
+    end
   end
 
   get '/lose' do
     ### YOUR CODE HERE ###
-    erb :lose # You may change/remove this line
+    if @game.check_win_or_lose != :lose # prevents cheating
+      redirect '/show'
+    else
+      erb :lose # You may change/remove this line
+    end
   end
 end
